@@ -2,6 +2,7 @@
 const { Model } = require("sequelize");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { v4: uuidv4 } = require("uuid");
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -30,8 +31,8 @@ module.exports = (sequelize, DataTypes) => {
         });
 
         const encryptedPassword = await bcrypt.hash(password, 10);
-        const uuid = require("uuid");
-        let randomId = uuid.v4();
+        // const uuid = require("uuid");
+        let randomId = uuidv4();
 
         let cekId = await this.findByPk(randomId);
 

@@ -1,4 +1,5 @@
 const { Payment, Invoice } = require("../models");
+const { v4: uuidv4 } = require("uuid");
 
 exports.index = async (req, res) => {
   const payment = await Payment.findAll();
@@ -52,8 +53,8 @@ exports.store = async (req, res) => {
   }
 
   try {
-    const uuid = require("uuid");
-    let randomId = uuid.v4();
+    // const uuid = require("uuid");
+    let randomId = uuidv4();
 
     let cekId = await Payment.findByPk(randomId);
 

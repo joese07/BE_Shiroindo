@@ -1,4 +1,5 @@
 const multer = require("multer");
+const { v4: uuidv4 } = require("uuid");
 const {
   Invoice,
   User,
@@ -113,8 +114,8 @@ exports.store = async (req, res) => {
   }
 
   try {
-    const uuid = require("uuid");
-    let randomId = uuid.v4();
+    // const uuid = require("uuid");
+    let randomId = uuidv4();
 
     let cekId = await Invoice.findByPk(randomId);
 
